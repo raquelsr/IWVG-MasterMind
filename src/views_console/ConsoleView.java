@@ -6,15 +6,15 @@ import controllers.PutController;
 import controllers.StartController;
 import mastermind.View;
 
-public class ConsoleView implements View  {
+public class ConsoleView implements View {
 
-private StartView startView;
-    
+    private StartView startView;
+
     private PutView putView;
-    
+
     private ContinueView continueView;
-    
-    public ConsoleView(){
+
+    public ConsoleView() {
         startView = new StartView();
         putView = new PutView();
         continueView = new ContinueView();
@@ -24,12 +24,12 @@ private StartView startView;
         assert operationController != null;
         operationController.accept(this);
     }
-    
+
     @Override
     public void visit(StartController startController) {
         startView.interact(startController);
     }
-    
+
     @Override
     public void visit(PutController putController) {
         putView.interact(putController);

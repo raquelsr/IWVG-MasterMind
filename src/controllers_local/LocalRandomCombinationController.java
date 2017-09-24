@@ -15,7 +15,6 @@ public class LocalRandomCombinationController extends LocalCombinationController
     public Combination getCombination() {
         Combination combination = new Combination();
         combination.random();
-
         return combination;
     }
 

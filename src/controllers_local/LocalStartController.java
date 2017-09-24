@@ -24,7 +24,6 @@ public class LocalStartController extends LocalOperationController implements St
         this.start(random);
         this.setState(State.IN_GAME);
     }
-    
 
     @Override
     public void accept(OperationControllerVisitor operationControllerVisitor) {

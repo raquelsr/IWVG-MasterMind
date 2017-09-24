@@ -4,7 +4,7 @@ import controllers.OperationController;
 import mastermind.Logic;
 import models.Game;
 
-public class LocalLogic implements Logic{
+public class LocalLogic implements Logic {
     private Game game;
 
     private LocalStartController startController;

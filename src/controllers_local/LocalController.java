@@ -25,6 +25,7 @@ public abstract class LocalController {
     public Game getGame() {
         return this.game;
     }
+
     public void start(Combination combination) {
         game.start(combination);
     }

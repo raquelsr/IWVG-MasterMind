@@ -11,7 +11,7 @@ public class Counter {
     public int getCounter() {
         return i;
     }
-    
+
     public void setCounter(int j) {
         this.i = j;
     }
@@ -19,5 +19,5 @@ public class Counter {
     public void add() {
         i++;
     }
-    
+
 }

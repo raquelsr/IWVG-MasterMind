@@ -53,6 +53,7 @@ public class PutView implements CombinationControllerVisitor {
     public void visit(RandomCombinationController randomCombinationController) {
         combination = randomCombinationController.getCombination();
         IO io = new IO();
+        new CombinationView(combination).write();
         io.readString("    --- Pulse enter para continuar.");
     }
 }

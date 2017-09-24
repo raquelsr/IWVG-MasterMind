@@ -77,12 +77,11 @@ public class Board {
     public void addAttempt() {
         counter.add();
     }
-    
 
     public boolean finishCounter() {
         return counter.finish();
     }
-    
+
     public boolean finish() {
         if (this.win() || counter.finish()) {
             return true;

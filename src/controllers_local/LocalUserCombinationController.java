@@ -9,21 +9,21 @@ import models.Game;
 import utils.LimitedCombinationDialog;
 
 public class LocalUserCombinationController extends LocalCombinationController implements UserCombinationController {
-    
+
     public LocalUserCombinationController(Game game) {
         super(game);
     }
 
     @Override
-    public Combination getCombination() {        
+    public Combination getCombination() {
         char[] aux = new LimitedCombinationDialog(Color.values(), Board.DIMENSION).read().toCharArray();
-        Combination combination = new Combination(Board.DIMENSION, aux);       
+        Combination combination = new Combination(Board.DIMENSION, aux);
         return combination;
     }
-    
+
     @Override
     public void accept(CombinationControllerVisitor combinationControllerVisitor) {
-        combinationControllerVisitor.visit(this);      
+        combinationControllerVisitor.visit(this);
     }
 
 }

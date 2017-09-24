@@ -9,15 +9,15 @@ public interface PutController extends OperationController {
     public CombinationController getCombinationController();
 
     public int getDead();
-    
+
     public int getInjured();
-    
+
     public boolean finishCounter();
 
     public int getAttempts();
 
     public void addAttempt();
-    
+
     public boolean win();
 
     public boolean finish();
