@@ -2,13 +2,13 @@ package models;
 
 public class Board {
 
-    private Combination combinationSecret;
+    private Combination secretCombination;
 
-    private Combination combinationKey;
+    private Combination publicCombination;
 
-    private Combination combinationSecretAux;
+    private Combination secretCombinationAux;
 
-    private Combination combinationKeyAux;
+    private Combination publicCombinationAux;
 
     public static final int ATTEMPTS = 10;
 
@@ -20,33 +20,33 @@ public class Board {
 
     public Board() {
         this.counter = new Counter();
-        this.combinationKey = new Combination();
-        this.combinationSecret = new Combination();
+        this.publicCombination = new Combination();
+        this.secretCombination = new Combination();
     }
 
     public void start(Combination combination) {
         assert combination != null;
-        this.combinationSecret = combination;
-        this.combinationSecretAux = this.combinationSecret.copy();
+        this.secretCombination = combination;
+        this.secretCombinationAux = this.secretCombination.copy();
         counter.reset();
     }
 
     public void put(Combination combination) {
         assert combination != null;
-        this.combinationKey = combination;
-        this.combinationKeyAux = this.combinationKey.copy();
+        this.publicCombination = combination;
+        this.publicCombinationAux = this.publicCombination.copy();
     }
 
     public boolean win() {
-        return this.combinationKey.equals(this.combinationSecret);
+        return this.publicCombination.equals(this.secretCombination);
     }
 
     public int getDead() {
         int nDead = 0;
         for (int i = 0; i < Board.DIMENSION; i++) {
-            if ((combinationKey.getToken()[i] == combinationSecret.getToken()[i]) && (combinationKeyAux.getToken()[i] != MARK)) {
-                this.combinationKeyAux.getToken()[i] = MARK;
-                this.combinationSecretAux.getToken()[i] = MARK;
+            if ((publicCombination.getToken()[i] == secretCombination.getToken()[i]) && (publicCombinationAux.getToken()[i] != MARK)) {
+                this.publicCombinationAux.getToken()[i] = MARK;
+                this.secretCombinationAux.getToken()[i] = MARK;
                 nDead++;
             }
         }
@@ -56,12 +56,12 @@ public class Board {
     public int getInjured() {
         int nInjured = 0;
         for (int i = 0; i < Board.DIMENSION; i++) {
-            if (this.combinationKey.getToken()[i] != this.combinationSecret.getToken()[i]) {
+            if (this.publicCombination.getToken()[i] != this.secretCombination.getToken()[i]) {
                 for (int j = 0; j < Board.DIMENSION; j++) {
-                    if ((this.combinationSecretAux.getToken()[i] != MARK)
-                            && (this.combinationSecretAux.getToken()[i] == this.combinationKeyAux.getToken()[j])) {
-                        this.combinationKeyAux.getToken()[j] = MARK;
-                        this.combinationSecretAux.getToken()[i] = MARK;
+                    if ((this.secretCombinationAux.getToken()[i] != MARK)
+                            && (this.secretCombinationAux.getToken()[i] == this.publicCombinationAux.getToken()[j])) {
+                        this.publicCombinationAux.getToken()[j] = MARK;
+                        this.secretCombinationAux.getToken()[i] = MARK;
                         nInjured++;
                     }
                 }
@@ -83,7 +83,7 @@ public class Board {
     }
 
     public boolean finish() {
-        if (this.win() || counter.finish()) {
+        if (this.win() || this.finishCounter()) {
             return true;
         }
         return false;

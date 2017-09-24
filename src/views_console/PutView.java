@@ -27,7 +27,7 @@ public class PutView implements CombinationControllerVisitor {
         putController.put(combination);
         putController.finish();
         if (putController.win()) {
-            new CombinationView(combination).winner();
+            new CombinationView(combination).win();
         } else {
             io.write("Hay " + putController.getDead() + " muertos");
             io.writeln(" y " + putController.getInjured() + " heridos.");

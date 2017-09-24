@@ -25,7 +25,7 @@ public class CombinationView {
         }
     }
 
-    void winner() {
+    void win() {
         io.writeln("¡ENHORABUENA! ¡Has ganado la partida!");
     }
 }
